@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Notify via Micrsoft Teams
+# Microsoft Teams
 
 import os
 import requests
@@ -20,12 +20,14 @@ def teams_msg(context):
     facts = []
     if context.get('WHAT', None) == "SERVICE":
         state = context["SERVICESTATE"]
+        dur = context["LASTSERVICEOK_REL"]
         color = COLORS.get(state)
         subtitle = "Service Notification"
         facts.append({"name": "Service:", "value": context["SERVICEDESC"]})
         output = context["SERVICEOUTPUT"] if context["SERVICEOUTPUT"] else ""
     else:
         state = context["HOSTSTATE"]
+        dur = context["LASTHOSTSTATECHANGE_REL"]
         color = COLORS.get(state)
         subtitle = "Host Notification"
         output = context["HOSTOUTPUT"] if context["HOSTOUTPUT"] else ""
@@ -37,8 +39,8 @@ def teams_msg(context):
         },
         {
             "name": "State:",
-            "value": state
-        }
+            "value": (state + " for " + dur)
+        },
     ])
 
     return {
