@@ -1,6 +1,7 @@
 # checkmk-notify-teams
 
-if you (unfortunately) find yourself utilizing Microsoft Teams incoming webhooks & need to send alerts from CheckMK, you can use this. utilizes params in UI to set the webhook url so you can send to different channels / don't hardcore webhook
+This is a modified version of the Slack plugin for Check_MK previously modified by RileyMichael.
+Forked with intent of making the notifications more information rich in a way I needed it.
 
 ## setup
 
@@ -11,3 +12,4 @@ if you (unfortunately) find yourself utilizing Microsoft Teams incoming webhooks
 ## Credits
 
 checkmk team -- this is a modified version of their slack webhook plugin
+RileyMichael -- for the original modified version of the plugin
